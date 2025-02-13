@@ -73,49 +73,162 @@
             font-size: clamp(20px, 5vw, 30px);
         }
 
-        /* Scene 4: School Building */
+        /* Scene 4: Post 16 - Simplified School Building */
         .school-building {
-            width: var(--art-container-width);
-            height: calc(var(--art-container-width) * 0.75);
-            transform: scale(clamp(0.8, 0.9, 1));
+            width: 100% !important; /* Override any previous width settings */
+            max-width: 300px;
+            height: min(40vh, 250px);
+            perspective: none;
+            position: relative;
+            margin: 2rem auto;
+            background: linear-gradient(to bottom, #E8E8E8, #D3D3D3);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .school-facade {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .window-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 90%;
+            margin-bottom: 20px;
         }
 
         .school-window {
-            width: clamp(30px, 5vw, 50px);
-            height: clamp(40px, 7vw, 70px);
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--school-blue);
+            border: 2px solid #696969;
+            border-radius: 4px;
+            position: relative;
         }
 
-        /* Scene 5: Cities */
+        .school-entrance {
+            width: 40%;
+            height: 30%;
+            background: #4A4A4A;
+            border-radius: 8px 8px 0 0;
+            margin-top: auto;
+        }
+
+        /* Scene 5: Long Distance - Simplified Cities */
         .distance-scene {
-            width: var(--scene-width);
-            height: min(45vh, 300px);
-            overflow: visible;
+            width: min(90vw, 400px);
+            height: min(40vh, 200px);
+            position: relative;
+            margin: 2rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .city {
-            width: min(30%, 200px);
-            height: min(40vh, 250px);
+            width: 35%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .cityscape {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            height: 80%;
         }
 
         .building {
-            width: clamp(20px, 5vw, 40px) !important;
+            width: 25% !important;
+            height: 100%;
+            background: linear-gradient(to bottom, #4A4A4A, #696969);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+        }
+
+        .building:nth-child(2) {
+            height: 90%;
+        }
+
+        .building:nth-child(3) {
+            height: 80%;
         }
 
         .heart-connection {
-            font-size: clamp(2rem, 6vw, 3rem);
-            z-index: 2;
+            font-size: clamp(2rem, 8vw, 3rem);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite;
         }
 
-        /* Scene 6: Flat */
+        /* Scene 6: First Flat - Simplified Apartment */
         .flat {
-            width: var(--art-container-width);
-            height: calc(var(--art-container-width) * 1.2);
-            transform: scale(clamp(0.8, 0.9, 1));
+            width: 100% !important; /* Override any previous width settings */
+            height: min(50vh, 320px);
+            position: relative;
+            margin: 2rem auto;
+            background: linear-gradient(to bottom, #F5DEB3, #DEB887);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .flat-facade {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr) 2fr;
+            gap: 15px;
+            padding: 20px;
         }
 
         .flat-window {
-            width: min(20%, 70px);
-            height: min(20%, 90px);
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--iceland-blue);
+            border: 2px solid #8B4513;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .flat-door {
+            width: 40%;
+            height: 25%;
+            background: #8B4513;
+            border-radius: 8px 8px 0 0;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .school-building,
+            .distance-scene,
+            .flat {
+                transform: scale(0.9);
+            }
+
+            .window-section {
+                gap: 5px;
+            }
+
+            .heart-connection {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
         }
 
         /* Scene 7: Waterfall */
@@ -678,7 +791,6 @@
         .city {
             width: 200px;
             height: 250px;
-            position: absolute;
             bottom: 0;
             display: flex;
             justify-content: center;
@@ -899,7 +1011,7 @@
             width: 100%;
             overflow: hidden;
             background: var(--iceland-blue);
-            margin: 2rem auto;
+            margin: 0rem auto;
             border-radius: 15px;
         }
 
@@ -1124,7 +1236,6 @@
                     <div class="building"></div>
                 </div>
             </div>
-            <div class="heart-connection">❤️</div>
             <div class="city derby">
                 <div class="cityscape">
                     <div class="building"></div>
@@ -1132,6 +1243,7 @@
                     <div class="building"></div>
                 </div>
             </div>
+            <div class="heart-connection">❤️</div>
         </div>
         <p>You in Sheffield becoming an amazing Children's Nurse,<br>Me in Derby learning to code...<br>Distance made our hearts grow fonder</p>
         <button class="btn" onclick="nextScene(6)">Keep Going</button>
