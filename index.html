@@ -73,52 +73,57 @@
             font-size: clamp(20px, 5vw, 30px);
         }
 
-        /* Scene 4: Post 16 - Simplified School Building */
+        /* Scene 4: Post 16 Building - Improved Responsiveness */
         .school-building {
-            width: 100% !important; /* Override any previous width settings */
-            max-width: 300px;
-            height: min(40vh, 250px);
-            perspective: none;
+            width: 100% !important;
+            max-width: 400px;
+            aspect-ratio: 4/3;
             position: relative;
             margin: 2rem auto;
-            background: linear-gradient(to bottom, #E8E8E8, #D3D3D3);
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
+            perspective: 1000px;
         }
 
         .school-facade {
             width: 100%;
             height: 100%;
+            background: linear-gradient(to bottom, #E8E8E8, #D3D3D3);
+            position: relative;
+            transform: rotateX(5deg);
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), 0 -5px 20px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            justify-content: space-between;
+            padding: 5% 0;
         }
 
         .window-section {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            width: 90%;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2%;
+            padding: 0 5%;
+            margin: 2% 0;
         }
 
         .school-window {
             width: 100%;
-            aspect-ratio: 3/4;
-            background: var(--school-blue);
-            border: 2px solid #696969;
-            border-radius: 4px;
+            aspect-ratio: 5/7;
+            background: linear-gradient(135deg, var(--school-blue), #1E90FF);
+            border: 3px solid #696969;
+            border-radius: 5px;
             position: relative;
         }
 
         .school-entrance {
-            width: 40%;
+            width: 25%;
             height: 30%;
             background: #4A4A4A;
-            border-radius: 8px 8px 0 0;
-            margin-top: auto;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px 10px 0 0;
         }
 
         /* Scene 5: Long Distance - Simplified Cities */
@@ -685,6 +690,7 @@
             position: relative;
             margin: 2rem auto;
             perspective: 1000px;
+            overflow: hidden;
         }
 
         .school-facade {
