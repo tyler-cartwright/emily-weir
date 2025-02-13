@@ -317,18 +317,21 @@
             display: none;
             min-height: 100vh;
             width: 100%;
-            position: fixed;
+            position: absolute;        /* CHANGED from fixed */
             top: 0;
             left: 0;
             padding: 1rem;
             transition: all 0.5s ease;
+            overflow-y: auto;         /* ADDED */
+            -webkit-overflow-scrolling: touch;  /* ADDED */
         }
 
         .scene.active {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;  /* CHANGED from center */
+            padding-bottom: 4rem;         /* ADDED */
         }
 
         /* Message container responsiveness */
