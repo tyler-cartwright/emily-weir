@@ -1125,8 +1125,19 @@
             background: #FF7676;
         }
 
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
         #noBtn {
-            transition: all 0.2s ease;
+            position: relative !important;
+        }
+
+        #noBtn.moving {
+            position: fixed !important;
         }
 
         /* Heart Trail */
@@ -1213,14 +1224,14 @@
             <div class="path"></div>
             <div id="trees"></div>
         </div>
-        <p>Finally convinced you to go on that local walk...<br>And this time, when I asked you to be my girlfriend, you said yes! 💕</p>
+        <p>Finally convinced you to go on that walk...<br>And this time, when I asked you to be my girlfriend, you said yes! 💕</p>
         <button class="btn" onclick="nextScene(4)">Continue</button>
     </div>
 </div>
 
 <div id="scene4" class="scene">
     <div class="message">
-        <div class="year">2016-2018</div>
+        <div class="year">2018-2020</div>
         <h1>Post 16 Together 📚</h1>
         <div class="school-building">
             <div class="school-facade">
@@ -1235,7 +1246,7 @@
 
 <div id="scene5" class="scene">
     <div class="message">
-        <div class="year">2018-2022</div>
+        <div class="year">2020-2023</div>
         <h1>Different Cities, Same Love ❤️</h1>
         <div class="distance-scene">
             <div class="city sheffield">
@@ -1261,7 +1272,7 @@
 
 <div id="scene6" class="scene">
     <div class="message">
-        <div class="year">2022</div>
+        <div class="year">2023-2024</div>
         <h1>Finally Together 🏠</h1>
         <div class="flat">
             <div class="flat-facade">
@@ -1280,7 +1291,7 @@
 
 <div id="scene7" class="scene">
     <div class="message">
-        <div class="year">2023</div>
+        <div class="year">2025</div>
         <h1>Our Biggest Adventure Yet! 💍</h1>
         <div class="waterfall" id="gullfoss">
             <div class="mist"></div>
@@ -1288,8 +1299,10 @@
         <p>At Gullfoss Falls in Iceland, I asked the most important question...<br>And now we're about to start our next chapter in our very own home!</p>
         <h2>Emily, My Valentine...</h2>
         <p>Will you continue this amazing journey with me?</p>
-        <button class="btn" onclick="acceptValentine()">Yes!</button>
-        <button class="btn" id="noBtn" onmouseover="moveNoButton()">No</button>
+        <div class="button-container">
+            <button class="btn" onclick="acceptValentine()">Yes!</button>
+            <button class="btn" id="noBtn" onclick="moveNoButton()">No</button>
+        </div>
     </div>
 </div>
 
@@ -1392,12 +1405,15 @@
 
     function moveNoButton() {
         const btn = document.getElementById('noBtn');
-        const maxX = window.innerWidth - btn.offsetWidth;
-        const maxY = window.innerHeight - btn.offsetHeight;
+        btn.classList.add('moving');
+        const maxX = window.innerWidth - btn.offsetWidth - 20; // Add padding for edges
+        const maxY = window.innerHeight - btn.offsetHeight - 20;
 
-        btn.style.position = 'absolute';
+        // More dramatic movement on click
+        btn.style.position = 'fixed';
         btn.style.left = Math.random() * maxX + 'px';
         btn.style.top = Math.random() * maxY + 'px';
+        btn.style.transition = 'all 0.2s ease'; // Smooth movement
     }
 
     function acceptValentine() {
